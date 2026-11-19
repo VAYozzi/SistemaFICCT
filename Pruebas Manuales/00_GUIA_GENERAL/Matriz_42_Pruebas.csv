@@ -1,0 +1,44 @@
+Código,Módulo,Rol Requerido,Tipo Prueba,Datos / Escenario,Archivo a Cargar,Resultado Esperado,Método de Verificación,Estado Inicial
+PM-001,Autenticación,ROLE_DIRECTOR,Positiva,nuevo.coordinador@uagrm.edu.bo / Coord2026!,Ninguno,Inicio de sesión exitoso y acceso al Dashboard con 7 módulos,Visualización del sidebar completo y datos del usuario,NO EJECUTADA
+PM-002,Autenticación,ROLE_COORDINADOR,Positiva,director.sistemas@uagrm.edu.bo / Director2026!,Ninguno,Inicio de sesión exitoso con 5 módulos visibles,Sidebar sin opciones de Personal ni Auditoría,NO EJECUTADA
+PM-003,Autenticación,ROLE_AUXILIAR,Positiva,secretaria.auxiliar@uagrm.edu.bo / Auxiliar2026!,Ninguno,Inicio de sesión exitoso con 3 módulos de ventanilla,Sidebar muestra solo Correspondencia Trámites y OCR,NO EJECUTADA
+PM-004,Autenticación,Público,Negativa,director.sistemas@uagrm.edu.bo / ClaveErronea123!,Ninguno,Alerta roja: Credenciales inválidas,Permanencia en /login sin emisión de token,NO EJECUTADA
+PM-005,Autenticación,Público,Negativa,Campo correo vacío o sin @,Ninguno,Mensaje de validación Zod en pantalla,Botón no procesa la solicitud,NO EJECUTADA
+PM-006,Autenticación,Cualquiera,Positiva,Clic en icono LogOut,Ninguno,Cierre de sesión y limpieza de estado de sesión,Redirección inmediata a /login,NO EJECUTADA
+PM-007,Autenticación,Público,Negativa,Navegar directo a http://localhost:5173/dashboard,Ninguno,Intercepción por ProtectedRoute y redirección a /login,URL cambia a /login,NO EJECUTADA
+PM-008,Personal y Roles,ROLE_DIRECTOR,Positiva,Consultar tabla de usuarios,Ninguno,Visualización de los 3 usuarios institucionales con su estado,Tabla renderiza nombres correos y roles,NO EJECUTADA
+PM-009,Personal y Roles,ROLE_COORDINADOR,Negativa,Navegar directo a /usuarios,Ninguno,Menú oculto y bloqueo de acceso,Ruta redirige o muestra acceso denegado,NO EJECUTADA
+PM-010,Personal y Roles,ROLE_AUXILIAR,Negativa,Navegar directo a /usuarios,Ninguno,Menú oculto y bloqueo de acceso,Ruta redirige o muestra acceso denegado,NO EJECUTADA
+PM-011,Personal y Roles,ROLE_DIRECTOR,Positiva,Emitir invitación para nuevo.auxiliar2026@uagrm.edu.bo (Rol Auxiliar),Ninguno,Invitación creada y token UUID generado en pantalla,Registro visible en tabla de invitaciones y bitácora,NO EJECUTADA
+PM-012,Personal y Roles,ROLE_DIRECTOR,Negativa,Emitir invitación con correo.invalido o vacío,Ninguno,Error de validación de formulario,No se emite la invitación,NO EJECUTADA
+PM-013,Personal y Roles,ROLE_DIRECTOR,Positiva,Desactivar y reactivar usuario ID 3 (Auxiliar),Ninguno,Cambio de estado activo a inactivo y viceversa en tiempo real,Badge de estado se actualiza en la tabla,NO EJECUTADA
+PM-014,Auditoría,ROLE_DIRECTOR,Positiva,Consultar bitácora inmutable de eventos,Ninguno,Tabla con más de 70 eventos ordenados cronológicamente,Visualización de fecha IP módulo y actor,NO EJECUTADA
+PM-015,Auditoría,ROLE_COORDINADOR,Negativa,Navegar directo a /auditoria,Ninguno,Bloqueo de acceso por Spring Security (403),Menú oculto y denegación en API,NO EJECUTADA
+PM-016,Auditoría,ROLE_AUXILIAR,Negativa,Navegar directo a /auditoria,Ninguno,Bloqueo de acceso por Spring Security (403),Menú oculto y denegación en API,NO EJECUTADA
+PM-017,Correspondencia,ROLE_AUXILIAR,Positiva,Consultar bandeja inicial poblada,Ninguno,Visualización de los 13 registros iniciales CITE-001 al 012,Tabla de correspondencia paginada con badges de tipo,NO EJECUTADA
+PM-018,Correspondencia,ROLE_AUXILIAR,Positiva,Cargar nuevo CITE CITE-FICCT-SIS-013-2026,Solicitud_013.pdf,Archivo digital subido con SHA-256 y CITE registrado,Nuevo registro aparece como primero en la tabla,NO EJECUTADA
+PM-019,Correspondencia,ROLE_AUXILIAR,Negativa,Intentar registrar CITE ya existente CITE-FICCT-SIS-001-2026,Solicitud_014.pdf,Error 409 Conflict: CITE ya registrado,Notificación de error y bloqueo de duplicación,NO EJECUTADA
+PM-020,Correspondencia,ROLE_AUXILIAR,Negativa,Intentar registrar con asunto vacío,Solicitud_014.pdf,Validación de formulario: campos requeridos,No se envía la petición al backend,NO EJECUTADA
+PM-021,Trámites,ROLE_AUXILIAR,Positiva,Consultar expediente inicial TR-2026-0002 (INGRESADO),Ninguno,Visualización de datos del estudiante Carlos Arnez,Expediente cargado con estado INGRESADO,NO EJECUTADA
+PM-022,Trámites,ROLE_AUXILIAR,Positiva,Transicionar TR-2026-0002 de INGRESADO a EN_VERIFICACION,Ninguno,Estado cambia a EN_VERIFICACION con registro de historial,Badge de estado cambia a color ámbar,NO EJECUTADA
+PM-023,Trámites,ROLE_COORDINADOR,Positiva,Transicionar TR-2026-0003 a CON_DICTAMEN con dictamen académico,Ninguno,Estado cambia a CON_DICTAMEN con dictamen guardado,Badge cambia a púrpura y dictamen visible,NO EJECUTADA
+PM-024,Trámites,ROLE_AUXILIAR,Negativa,Intentar transicionar a CON_DICTAMEN o APROBADO,Ninguno,Error 403 Forbidden: falta de autoridad académica,Mensaje de alerta en pantalla y estado intacto,NO EJECUTADA
+PM-025,Trámites,ROLE_DIRECTOR,Positiva,Aprobar trámite TR-2026-0004 en estado CON_DICTAMEN,Ninguno,Estado cambia a APROBADO mediante resolución directiva,Badge cambia a verde esmeralda,NO EJECUTADA
+PM-026,Trámites,ROLE_COORDINADOR,Negativa,Intentar aprobar trámite (pasar a APROBADO),Ninguno,Error 403 Forbidden: exclusivo del Director,Bloqueo en backend por regla de negocio RN-01,NO EJECUTADA
+PM-027,Trámites,ROLE_DIRECTOR,Negativa,Intentar pasar trámite INGRESADO directo a APROBADO,Ninguno,Error 409 Conflict: transición inválida,Máquina de estados impide el salto de etapas,NO EJECUTADA
+PM-028,Trámites,ROLE_AUXILIAR,Positiva,Concluir trámite TR-2026-0005 en estado APROBADO,Ninguno,Estado pasa a CONCLUIDO y se sella la fecha de fin,Badge pasa a gris y trámite finalizado,NO EJECUTADA
+PM-029,OCR y Búsqueda,ROLE_AUXILIAR,Positiva,Procesar con OCR el documento digital ID 1 (test_doc.pdf),Ninguno,PyTesseract extrae texto crudo y porcentaje de confianza,Texto desplegado en panel izquierdo del Visor,NO EJECUTADA
+PM-030,OCR y Búsqueda,ROLE_AUXILIAR,Positiva,Subir y procesar nuevo documento DOC-OCR-001.pdf,DOC-OCR-001.pdf,Extracción de texto institucional de alta nitidez,Panel muestra texto con confianza > 90%,NO EJECUTADA
+PM-031,OCR y Búsqueda,ROLE_AUXILIAR,Positiva,Editar texto en panel derecho y presionar Guardar Validación,Ninguno,Soberanía humana: trigger de PostgreSQL alimenta tsvector,Mensaje de texto validado y sincronizado,NO EJECUTADA
+PM-032,OCR y Búsqueda,Cualquiera,Positiva,Buscar palabra clave convalidación en barra superior,Ninguno,Documento encontrado y palabra resaltada en amarillo con <mark>,Lista de resultados muestra fragmento resaltado,NO EJECUTADA
+PM-033,OCR y Búsqueda,Cualquiera,Positiva,Buscar palabra inexistente xyz999inexistente,Ninguno,Mensaje informativo: No se encontraron coincidencias,Sin errores de servidor en pantalla,NO EJECUTADA
+PM-034,Malla y Cupos,ROLE_COORDINADOR,Positiva,Consultar malla curricular y materias del Plan 187-3,Ninguno,Despliegue de las 18 asignaturas iniciales por semestre,Visualización de Cálculo, Programación, BD y Software,NO EJECUTADA
+PM-035,Malla y Cupos,ROLE_COORDINADOR,Positiva,Consultar predicción Random Forest para Programación I y Periodo 1,Ninguno,Estimación de demanda cupos recomendados y semáforo ROJO,Panel muestra tarjeta de inferencia IA con aviso,NO EJECUTADA
+PM-036,Malla y Cupos,ROLE_COORDINADOR,Positiva,Comprobar aviso institucional consultivo en pantalla de predicción,Ninguno,Aviso legal: Inferencia orientativa bajo supervisión humana,Texto institucional presente al pie de la tarjeta,NO EJECUTADA
+PM-037,Malla y Cupos,ROLE_AUXILIAR,Negativa,Navegar directo a /academico,Ninguno,Menú oculto en sidebar para rol auxiliar,Redirección o bloqueo en interfaz,NO EJECUTADA
+PM-038,Dashboard,ROLE_DIRECTOR,Positiva,Visualizar KPIs y contadores consolidados,Ninguno,10 Estudiantes 8 Trámites 5 Alertas y 3 Titulados,Tarjetas KPI renderizadas correctamente con datos reales,NO EJECUTADA
+PM-039,Dashboard,ROLE_DIRECTOR,Positiva,Revisar listado semafórico de alertas institucionales,Ninguno,Visualización de 5 alertas pendientes con badges de color,Listado ordenado con tarjetas roja amarilla y verde,NO EJECUTADA
+PM-040,Dashboard,ROLE_DIRECTOR,Positiva,Atender alerta roja de Sobredemanda con resolución humana,Ninguno,Alerta cambia a ATENDIDA y contador del dashboard disminuye,Alerta desaparece de pendientes y se registra atención,NO EJECUTADA
+PM-041,Dashboard,ROLE_COORDINADOR,Negativa,Intentar atender alerta sin escribir resolución,Ninguno,Validación de formulario: resolución obligatoria,Botón deshabilitado o alerta de validación,NO EJECUTADA
+PM-042,Dashboard,ROLE_DIRECTOR,Positiva,Presionar botón Generar Dossier Oficial (PDF),Ninguno,Compilación automática de dossier institucional con hash SHA-256,Mensaje de confirmación en pantalla con hash SHA-256,NO EJECUTADA
+

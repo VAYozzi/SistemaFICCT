@@ -1,0 +1,26 @@
+﻿Escenario,Código Asignatura,Nombre de la Materia,Nivel Semestre,Créditos,Horas Teóricas,Horas Prácticas,Prerrequisito
+ESC-MAT-01,INF-110,Introducción a la Informática,1,4,3,2,Ninguno
+ESC-MAT-02,MAT-101,Cálculo I,1,5,4,2,Ninguno
+ESC-MAT-03,FIS-100,Física I,1,5,4,2,Ninguno
+ESC-MAT-04,LIN-100,Inglés Técnico I,1,3,2,2,Ninguno
+ESC-MAT-05,ADM-100,Administración General,1,3,3,0,Ninguno
+ESC-MAT-06,INF-120,Programación I,2,5,4,2,INF-110
+ESC-MAT-07,MAT-102,Cálculo II,2,5,4,2,MAT-101
+ESC-MAT-08,FIS-102,Física II,2,5,4,2,FIS-100
+ESC-MAT-09,MAT-103,Álgebra Lineal,2,4,3,2,MAT-101
+ESC-MAT-10,LIN-101,Inglés Técnico II,2,3,2,2,LIN-100
+ESC-MAT-11,INF-210,Programación II,3,5,4,2,INF-120
+ESC-MAT-12,INF-211,Estructuras Discretas,3,4,3,2,MAT-103
+ESC-MAT-13,MAT-207,Ecuaciones Diferenciales,3,4,3,2,MAT-102
+ESC-MAT-14,FIS-200,Física III (Electromagnetismo),3,4,3,2,FIS-102
+ESC-MAT-15,EST-200,Probabilidad y Estadística,3,4,3,2,MAT-102
+ESC-MAT-16,INF-220,Estructuras de Datos I,4,5,4,2,INF-210
+ESC-MAT-17,INF-221,Arquitectura de Computadoras,4,4,3,2,INF-211
+ESC-MAT-18,MAT-204,Métodos Numéricos,4,4,3,2,MAT-207
+ESC-MAT-19,INF-310,Base de Datos I,5,5,4,2,INF-220
+ESC-MAT-20,INF-312,Sistemas Operativos I,5,4,3,2,INF-221
+ESC-MAT-21,INF-320,Base de Datos II,6,5,4,2,INF-310
+ESC-MAT-22,INF-323,Redes de Computadoras I,6,4,3,2,INF-312
+ESC-MAT-23,INF-412,Ingeniería de Software I,7,5,4,2,INF-320
+ESC-MAT-24,INF-422,Ingeniería de Software II,8,5,4,2,INF-412
+ESC-MAT-25,INF-512,Taller de Grado I,9,5,3,4,INF-422

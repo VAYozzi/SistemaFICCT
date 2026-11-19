@@ -1,0 +1,111 @@
+version: '3.8'
+
+networks:
+  ficct_network:
+    driver: bridge
+
+volumes:
+  pgdata:
+    driver: local
+  shared_storage:
+    driver: local
+
+services:
+  # -------------------------------------------------------------
+  # 1. Base de Datos Relacional
+  # -------------------------------------------------------------
+  db:
+    image: postgres:15-alpine
+    container_name: ficct-sistemas-db
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-ficct_sistemas_db}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres123}
+      TZ: America/La_Paz
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - ficct_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ficct_sistemas_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # -------------------------------------------------------------
+  # 2. Microservicio Especializado de IA, OCR y RPA
+  # -------------------------------------------------------------
+  ai-worker-api:
+    build:
+      context: ./ai-worker-api
+      dockerfile: Dockerfile
+    container_name: ficct-sistemas-ai-worker
+    restart: always
+    environment:
+      INTERNAL_SHARED_SECRET: ${INTERNAL_SHARED_SECRET:-ficct_super_secret_internal_key_2026}
+      STORAGE_BASE_PATH: /app/storage
+      PYTHONUNBUFFERED: 1
+    volumes:
+      - shared_storage:/app/storage
+      - ./ai-worker-api/app/models:/app/models
+    networks:
+      - ficct_network
+    expose:
+      - "8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # -------------------------------------------------------------
+  # 3. Backend Transaccional y Orquestador
+  # -------------------------------------------------------------
+  core-api:
+    build:
+      context: ./core-api
+      dockerfile: Dockerfile
+    container_name: ficct-sistemas-core-api
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+      ai-worker-api:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${POSTGRES_DB:-ficct_sistemas_db}
+      DB_USER: ${POSTGRES_USER:-postgres}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-postgres123}
+      JWT_SECRET: ${JWT_SECRET:-9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b}
+      INTERNAL_SHARED_SECRET: ${INTERNAL_SHARED_SECRET:-ficct_super_secret_internal_key_2026}
+      AI_WORKER_URL: http://ai-worker-api:8000
+      STORAGE_BASE_PATH: /app/storage
+    ports:
+      - "8080:8080"
+    volumes:
+      - shared_storage:/app/storage
+    networks:
+      - ficct_network
+
+  # -------------------------------------------------------------
+  # 4. Frontend Web SPA
+  # -------------------------------------------------------------
+  web-client:
+    build:
+      context: ./web-client
+      dockerfile: Dockerfile
+    container_name: ficct-sistemas-web-client
+    restart: always
+    depends_on:
+      - core-api
+    ports:
+      - "80:80"
+    networks:
+      - ficct_network
+

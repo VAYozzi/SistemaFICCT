@@ -1,0 +1,26 @@
+﻿Código PM,Módulo,Rol Requerido,Escenario / Fila,Archivo de Respaldo,Resultado Esperado,Resultado Obtenido,Estado,Observaciones
+PM-001,Autenticación,ROLE_DIRECTOR,ESC-USR-01,Ninguno,Login exitoso y redirección al Dashboard,PENDIENTE,NO EJECUTADA,Director activo actual
+PM-002,Autenticación,ROLE_COORDINADOR,ESC-USR-02,Ninguno,Login exitoso y redirección al Dashboard,PENDIENTE,NO EJECUTADA,Coordinador activo
+PM-003,Autenticación,ROLE_AUXILIAR,ESC-USR-03,Ninguno,Login exitoso y redirección a Correspondencia,PENDIENTE,NO EJECUTADA,Auxiliar activo
+PM-004,Autenticación,Cualquiera,NEG-01,Ninguno,Error visible: Credenciales inválidas,PENDIENTE,NO EJECUTADA,Prueba negativa contraseña
+PM-005,Personal y Roles,ROLE_DIRECTOR,ESC-USR-01..10,Usuarios_Prueba.csv,Listado de usuarios visible con estado y rol,PENDIENTE,NO EJECUTADA,Verificar paginación
+PM-006,Personal y Roles,ROLE_DIRECTOR,ESC-INV-01,Invitaciones_Prueba.csv,Invitación emitida y token generado,PENDIENTE,NO EJECUTADA,Registro en auditoría
+PM-007,Personal y Roles,ROLE_COORDINADOR,NEG-05,Ninguno,Bloqueo 403 Forbidden o menú oculto,PENDIENTE,NO EJECUTADA,Control RBAC estricto
+PM-008,Personal y Roles,ROLE_AUXILIAR,NEG-04,Ninguno,Bloqueo 403 Forbidden o menú oculto,PENDIENTE,NO EJECUTADA,Control RBAC estricto
+PM-009,Auditoría,ROLE_DIRECTOR,Auditoría General,Ninguno,Eventos inmutables visibles en tabla,PENDIENTE,NO EJECUTADA,Verificar filtros de búsqueda
+PM-010,Auditoría,ROLE_COORDINADOR,NEG-07,Ninguno,Bloqueo 403 Forbidden o menú oculto,PENDIENTE,NO EJECUTADA,Control RBAC estricto
+PM-011,Correspondencia,ROLE_AUXILIAR,ESC-COR-01,Carta_001.pdf,CITE registrado y archivo vinculado,PENDIENTE,NO EJECUTADA,Mesa de entrada
+PM-012,Correspondencia,ROLE_AUXILIAR,NEG-13,Carta_001.pdf,Error: CITE duplicado no permitido,PENDIENTE,NO EJECUTADA,Prueba unicidad CITE
+PM-013,Trámites,ROLE_AUXILIAR,ESC-TRA-01,Solicitud_001.pdf,Trámite pasa a EN_VERIFICACION,PENDIENTE,NO EJECUTADA,Máquina de estados
+PM-014,Trámites,ROLE_COORDINADOR,ESC-TRA-02,Ninguno,Emisión de dictamen técnico con éxito,PENDIENTE,NO EJECUTADA,Paso a CON_DICTAMEN
+PM-015,Trámites,ROLE_COORDINADOR,NEG-09,Ninguno,Error 403: Coordinador no puede aprobar,PENDIENTE,NO EJECUTADA,Soberanía Directiva
+PM-016,Trámites,ROLE_DIRECTOR,ESC-TRA-03,Ninguno,Trámite pasa a APROBADO con dictamen,PENDIENTE,NO EJECUTADA,Firma ejecutiva
+PM-017,Trámites,ROLE_AUXILIAR,ESC-TRA-04,Ninguno,Trámite pasa a CONCLUIDO y se cierra,PENDIENTE,NO EJECUTADA,Entrega a estudiante
+PM-018,OCR y Búsqueda,ROLE_AUXILIAR,DOC-OCR-001.pdf,DOC-OCR-001.pdf,Texto extraído visible en Visor Dual,PENDIENTE,NO EJECUTADA,Visión artificial FastAPI
+PM-019,OCR y Búsqueda,ROLE_AUXILIAR,DOC-OCR-001.pdf,Resultados_Esperados.csv,Texto corregido y tsvector indexado,PENDIENTE,NO EJECUTADA,Soberanía Humana
+PM-020,OCR y Búsqueda,Cualquiera,DOC-OCR-001.pdf,Resultados_Esperados.csv,Búsqueda exitosa con marcas <mark>,PENDIENTE,NO EJECUTADA,Full-Text Search
+PM-021,Malla y Cupos,ROLE_COORDINADOR,ESC-PLA-01,Planes_de_Estudio.csv,Malla curricular desplegada correctamente,PENDIENTE,NO EJECUTADA,Asignaturas y semestres
+PM-022,Malla y Cupos,ROLE_COORDINADOR,ESC-PRED-01,Escenarios_Prediccion.csv,Inferencia Random Forest con semáforo,PENDIENTE,NO EJECUTADA,Aviso consultivo IA
+PM-023,Panel y Alertas,ROLE_DIRECTOR,ESC-ALE-01,Escenarios_Alertas.csv,Alerta atendida con resolución humana,PENDIENTE,NO EJECUTADA,Estado pasa a ATENDIDA
+PM-024,Panel y Alertas,ROLE_COORDINADOR,NEG-16,Escenarios_Alertas.csv,Error: resolución obligatoria,PENDIENTE,NO EJECUTADA,Exigencia de justificación
+PM-025,Dossier Oficial,ROLE_DIRECTOR,ESC-DOS-01,Verificacion_Reportes.csv,PDF generado con huella SHA-256,PENDIENTE,NO EJECUTADA,Compilador RPA

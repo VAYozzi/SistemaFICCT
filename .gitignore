@@ -1,0 +1,42 @@
+# Environment variables & secrets
+.env
+*.env
+!.env.example
+
+# Storage local data & binary uploads
+storage/*
+!storage/.gitkeep
+
+# Installers cache
+installers/
+
+# Node / Frontend
+node_modules/
+dist/
+.vite/
+*.log
+
+# Java / Maven / Spring Boot
+target/
+*.class
+*.jar
+*.war
+.mvn/wrapper/maven-wrapper.jar
+
+# Python / FastAPI
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.pytest_cache/
+
+# IDE & OS
+.idea/
+.vscode/
+*.suo
+*.user
+Thumbs.db
+[Dd]esktop.ini
+

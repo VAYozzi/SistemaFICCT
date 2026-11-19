@@ -1,0 +1,26 @@
+﻿Código Caso,Módulo,Rol Ejecutor,Operación Intentada,Dato Inválido / Condición,Código HTTP Esperado,Mensaje / Comportamiento Esperado
+NEG-01,Autenticación,Público,Iniciar Sesión,Contraseña errónea,401 Unauthorized,Credenciales institucionales incorrectas
+NEG-02,Autenticación,Público,Iniciar Sesión,Correo vacío,400 Bad Request,Validación: correo obligatorio
+NEG-03,Autenticación,Público,Iniciar Sesión,Formato de correo no válido,400 Bad Request,Validación: formato de correo institucional
+NEG-04,Usuarios,ROLE_AUXILIAR,Acceder a /usuarios,Rol no autorizado,403 Forbidden,Acceso denegado por Spring Security
+NEG-05,Usuarios,ROLE_COORDINADOR,Acceder a /usuarios,Rol no autorizado,403 Forbidden,Acceso denegado por Spring Security
+NEG-06,Auditoría,ROLE_AUXILIAR,Acceder a /auditoria,Rol no autorizado,403 Forbidden,Acceso denegado por Spring Security
+NEG-07,Auditoría,ROLE_COORDINADOR,Acceder a /auditoria,Rol no autorizado,403 Forbidden,Acceso denegado por Spring Security
+NEG-08,Trámites,ROLE_AUXILIAR,Transicionar a APROBADO,Falta de autoridad ejecutiva,403 Forbidden,Solo el Director puede APROBAR trámites
+NEG-09,Trámites,ROLE_COORDINADOR,Transicionar a APROBADO,Falta de autoridad ejecutiva,403 Forbidden,Solo el Director puede APROBAR trámites
+NEG-10,Trámites,ROLE_AUXILIAR,Transicionar a CON_DICTAMEN,Falta de autoridad académica,403 Forbidden,Dictamen requiere ROLE_COORDINADOR o superior
+NEG-11,Trámites,ROLE_DIRECTOR,Saltar de INGRESADO a APROBADO,Transición inválida,409 Conflict,Violación de máquina de estados finitos
+NEG-12,Trámites,ROLE_DIRECTOR,Transicionar trámite CONCLUIDO,Trámite en estado final,409 Conflict,No se permiten transiciones desde estado final
+NEG-13,Correspondencia,ROLE_AUXILIAR,Registrar CITE duplicado,CITE ya existente en base de datos,409 Conflict,Código CITE ya se encuentra registrado
+NEG-14,Correspondencia,ROLE_AUXILIAR,Registrar correspondencia,Código CITE en blanco,400 Bad Request,Validación: código CITE obligatorio
+NEG-15,Correspondencia,ROLE_AUXILIAR,Registrar correspondencia,Destinatario vacío,400 Bad Request,Validación: destinatario obligatorio
+NEG-16,Alertas,ROLE_COORDINADOR,Atender alerta,Resolución humana vacía,400 Bad Request,Validación: acción tomada es obligatoria
+NEG-17,Alertas,ROLE_DIRECTOR,Atender alerta inexistente,ID de alerta = 99999,404 Not Found,Alerta no encontrada
+NEG-18,OCR,ROLE_AUXILIAR,Procesar documento inexistente,ID documento = 88888,404 Not Found,Documento digital no encontrado
+NEG-19,OCR,ROLE_AUXILIAR,Validar texto OCR,Payload con lista de páginas vacía,400 Bad Request,Validación: páginas requeridas
+NEG-20,Académico,ROLE_COORDINADOR,Crear materia con código duplicado,Código INF-110 ya existente,409 Conflict,Código de materia ya registrado
+NEG-21,Académico,ROLE_COORDINADOR,Crear plan de estudio,Nombre de plan en blanco,400 Bad Request,Validación: nombre obligatorio
+NEG-22,Institucional,ROLE_DIRECTOR,Registrar titulado,Modalidad inválida (MOD_FALSA),400 Bad Request,Validación: modalidad no reconocida
+NEG-23,Usuarios,ROLE_DIRECTOR,Emitir invitación,Correo ya registrado,409 Conflict,El correo ya cuenta con usuario activo
+NEG-24,Usuarios,ROLE_DIRECTOR,Transferir dirección a usuario inactivo,Usuario destino suspendido,409 Conflict,No se puede transferir a usuario inactivo
+NEG-25,Seguridad,Público,Acceso con token JWT manipulado,Firma HMAC inválida,401 Unauthorized,Token JWT inválido o adulterado

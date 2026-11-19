@@ -1,0 +1,11 @@
+﻿Escenario,Nombre Completo,Correo Institucional,Cargo,Rol Solicitado,Estado Esperado,Observaciones
+ESC-USR-01,Ing. Roberto Carlos Méndez,roberto.mendez@uagrm.edu.bo,Docente Investigador,ROLE_COORDINADOR,ACTIVO,Perfil para coordinación académica alternativa
+ESC-USR-02,Lic. Claudia Patricia Vaca,claudia.vaca@uagrm.edu.bo,Secretaria Académica,ROLE_AUXILIAR,ACTIVO,Perfil de ventanilla turno tarde
+ESC-USR-03,Ing. Fernando Justiniano,fernando.justiniano@uagrm.edu.bo,Docente Titular,ROLE_COORDINADOR,ACTIVO,Candidato a comisión de acreditación
+ESC-USR-04,Univ. Mario Suárez Peña,mario.suarez@uagrm.edu.bo,Auxiliar de Cómputo,ROLE_AUXILIAR,ACTIVO,Apoyo en digitalización documental
+ESC-USR-05,Lic. Elena Morales Ortiz,elena.morales@uagrm.edu.bo,Encargada de Archivo,ROLE_AUXILIAR,ACTIVO,Reemplazo temporal en correspondencia
+ESC-USR-06,Ing. Walter Zeballos,walter.zeballos@uagrm.edu.bo,Docente Emérito,ROLE_COORDINADOR,SUSPENDIDO,Para prueba de desactivación temporal
+ESC-USR-07,Univ. Andrea Saucedo,andrea.saucedo@uagrm.edu.bo,Pasante de Dirección,ROLE_AUXILIAR,ACTIVO,Carga masiva de correspondencia
+ESC-USR-08,Ing. Marcelo Barrientos,marcelo.barrientos@uagrm.edu.bo,Coordinador de Redes,ROLE_COORDINADOR,ACTIVO,Monitoreo de cupos de telecomunicaciones
+ESC-USR-09,Lic. Patricia Aguilera,patricia.aguilera@uagrm.edu.bo,Asistente Legal,ROLE_AUXILIAR,ACTIVO,Revisión de resoluciones de convalidación
+ESC-USR-10,Ing. Julio César Ribera,julio.ribera@uagrm.edu.bo,Director Saliente,ROLE_COORDINADOR,ACTIVO,Participante en simulación de entrega de mando

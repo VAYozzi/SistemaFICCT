@@ -1,0 +1,4 @@
+﻿Escenario,Periodo Código,Fecha Desde,Fecha Hasta,Módulos a Incluir,Formato Salida,Resultado Esperado,Verificación SHA-256
+ESC-DOS-01,2026-1,2026-01-01,2026-06-30,"CORRESPONDENCIA, TRAMITES, ALERTAS, POA",PDF,Dossier Oficial Compilado,Genera hash criptográfico verificable
+ESC-DOS-02,2025-2,2025-08-01,2025-12-31,"CORRESPONDENCIA, TRAMITES, ALERTAS",PDF,Informe Semestral Anterior,Genera hash criptográfico verificable
+ESC-DOS-03,2026-1,2026-02-01,2026-03-31,"ALERTAS, POA",PDF,Informe de Monitoreo Preventivo,Genera hash criptográfico verificable

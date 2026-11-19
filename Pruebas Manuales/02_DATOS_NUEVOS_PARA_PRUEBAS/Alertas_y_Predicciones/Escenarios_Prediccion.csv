@@ -1,0 +1,9 @@
+﻿Escenario,Materia,Código,Periodo,Estudiantes Históricos,Cupos Ofertados,Predicción Demanda (ML),Déficit Estimado,Semaforización Sugerida,Acción Recomendada
+ESC-PRED-01,Programación I,INF-120,2026-1,120,80,115,-35,ROJO,Aperturar paralelo adicional urgente
+ESC-PRED-02,Cálculo I,MAT-101,2026-1,150,120,142,-22,ROJO,Ampliar 10 cupos en cada grupo existente
+ESC-PRED-03,Estructuras de Datos I,INF-220,2026-1,90,90,88,+2,VERDE,Oferta equilibrada con demanda proyectada
+ESC-PRED-04,Base de Datos I,INF-310,2026-1,85,80,84,-4,AMARILLO,Monitorear demanda durante segunda vuelta
+ESC-PRED-05,Ingeniería de Software I,INF-412,2026-1,70,75,68,+7,VERDE,Cupos suficientes para la población proyectada
+ESC-PRED-06,Sistemas Operativos I,INF-312,2026-1,80,70,79,-9,AMARILLO,Analizar habilitación de cupos de repitencia
+ESC-PRED-07,Física General,FIS-100,2026-1,110,80,108,-28,ROJO,Apertura de grupo de apoyo vespertino
+ESC-PRED-08,Taller de Grado I,INF-512,2026-1,40,45,38,+7,VERDE,Capacidad docente suficiente para tutorías

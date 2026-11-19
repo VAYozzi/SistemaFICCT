@@ -1,0 +1,11 @@
+﻿Escenario,Correo Destino,Rol ID,Rol Nombre,Vigencia Horas,Resultado Esperado
+ESC-INV-01,nuevo.auxiliar2026@uagrm.edu.bo,3,ROLE_AUXILIAR,48,Invitación emitida con token UUID válido
+ESC-INV-02,coord.investigacion@uagrm.edu.bo,2,ROLE_COORDINADOR,48,Invitación emitida con token UUID válido
+ESC-INV-03,apoyo.kardex@uagrm.edu.bo,3,ROLE_AUXILIAR,48,Invitación emitida con token UUID válido
+ESC-INV-04,tutor.academico@uagrm.edu.bo,2,ROLE_COORDINADOR,48,Invitación emitida con token UUID válido
+ESC-INV-05,secretaria.tarde@uagrm.edu.bo,3,ROLE_AUXILIAR,48,Invitación emitida con token UUID válido
+ESC-INV-06,correo.invalido.sin.dominio,3,ROLE_AUXILIAR,48,Error de validación: formato inválido
+ESC-INV-07,nuevo.coordinador@uagrm.edu.bo,2,ROLE_COORDINADOR,48,Error: correo ya registrado en el sistema
+ESC-INV-08,auxiliar.temporal@uagrm.edu.bo,3,ROLE_AUXILIAR,48,Invitación emitida con token UUID válido
+ESC-INV-09,auditor.interno@uagrm.edu.bo,2,ROLE_COORDINADOR,48,Invitación emitida con token UUID válido
+ESC-INV-10,,3,ROLE_AUXILIAR,48,Error de validación: campo correo obligatorio
